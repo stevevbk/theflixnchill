@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquette - The Flix n' Chill</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #EAEAEA;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .accent-color {
+            background-color: #FF6B00;
+        }
+        .accent-color-text {
+            color: #FF6B00;
+        }
+        .accent-border {
+            border-color: #FF6B00;
+        }
+        .secondary-bg {
+            background-color: #1E1E1E;
+        }
+        .card-bg {
+            background-color: #2a2a2a;
+        }
+        .main-section {
+            display: none;
+        }
+        .main-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-[#121212] text-[#EAEAEA]">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#121212]/80 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between py-4">
+                <a href="#" class="text-2xl font-bold tracking-wider" onclick="showPage('home')">Flix<span class="accent-color-text">n'</span>Chill</a>
+                <div class="hidden md:flex items-center space-x-8 text-lg">
+                    <a href="#" class="hover:accent-color-text transition-colors duration-300" onclick="showPage('menu')">Menu</a>
+                    <a href="#" class="hover:accent-color-text transition-colors duration-300" onclick="showPage('cinema')">Cinéma</a>
+                    <a href="#" class="hover:accent-color-text transition-colors duration-300" onclick="showPage('reservation')">Réserver une salle</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 rounded-full hover:bg-secondary-bg transition-colors">
+                        <i data-lucide="shopping-cart"></i>
+                        <span class="absolute top-0 right-0 h-4 w-4 accent-color text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                    <button class="hidden md:inline-block bg-transparent border accent-border text-[#FF6B00] px-4 py-2 rounded-lg hover:bg-[#FF6B00] hover:text-white transition-all duration-300" onclick="showPage('admin')">
+                        Admin
+                    </button>
+                    <button class="md:hidden p-2 rounded-full hover:bg-secondary-bg transition-colors">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page d'Accueil -->
+    <main id="home" class="main-section active">
+        <!-- Hero Section -->
+        <div class="h-[60vh] md:h-[80vh] bg-cover bg-center flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Plat+Signature');">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-7xl font-bold">Vos Plats Préférés, Vos Films en un Clic</h1>
+                <p class="text-xl md:text-2xl mt-4 mb-8">La meilleure expérience fast-food & cinéma, livrée chez vous.</p>
+                <button class="accent-color text-white px-8 py-4 rounded-lg text-xl font-bold hover:opacity-90 transition-opacity" onclick="showPage('menu')">
+                    Commander maintenant
+                </button>
+            </div>
+        </div>
+        
+        <!-- Section À l'affiche -->
+        <div class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold mb-8">À l'affiche cette semaine</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Movie card example -->
+                <div class="transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="showPage('cinema')">
+                    <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Film+1" alt="Affiche Film 1" class="rounded-lg shadow-lg">
+                </div>
+                <div class="transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="showPage('cinema')">
+                    <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Film+2" alt="Affiche Film 2" class="rounded-lg shadow-lg">
+                </div>
+                <div class="transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="showPage('cinema')">
+                     <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Série+A" alt="Affiche Série A" class="rounded-lg shadow-lg">
+                </div>
+                <div class="transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="showPage('cinema')">
+                     <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Film+3" alt="Affiche Film 3" class="rounded-lg shadow-lg">
+                </div>
+                 <div class="transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="showPage('cinema')">
+                     <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Série+B" alt="Affiche Série B" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Menus Populaires -->
+        <div class="bg-secondary-bg py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Nos Menus Populaires</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product card example -->
+                    <div class="card-bg rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/000000/FFFFFF?text=Burger+Flix" alt="Burger Flix" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Burger Flix</h3>
+                            <p class="text-gray-400 mb-4">Le classique indémodable, avec notre sauce secrète.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold accent-color-text">8.50€</span>
+                                <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card-bg rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/000000/FFFFFF?text=Pizza+Chill" alt="Pizza Chill" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Pizza Chill</h3>
+                            <p class="text-gray-400 mb-4">Pepperoni, fromage fondant et une touche de piment.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold accent-color-text">12.00€</span>
+                                <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card-bg rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/000000/FFFFFF?text=Box+Séries" alt="Box Séries" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Box Séries</h3>
+                            <p class="text-gray-400 mb-4">Nuggets, frites et boisson pour vos nuits de binge-watching.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold accent-color-text">15.50€</span>
+                                <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card-bg rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/600x400/000000/FFFFFF?text=Milkshake" alt="Milkshake" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Milkshake Oreo</h3>
+                            <p class="text-gray-400 mb-4">Le plaisir coupable parfait pour accompagner votre film.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold accent-color-text">6.00€</span>
+                                <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    
+    <!-- Page Menu -->
+    <main id="menu" class="main-section">
+        <div class="container mx-auto px-4 py-12">
+            <h1 class="text-4xl font-bold mb-8 text-center">Notre Menu</h1>
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Barre latérale -->
+                <aside class="w-full md:w-1/4">
+                    <div class="sticky top-24">
+                        <h2 class="text-2xl font-bold mb-4">Catégories</h2>
+                        <ul class="space-y-2 text-lg">
+                            <li><a href="#" class="block p-3 rounded-lg accent-color text-white">Burgers</a></li>
+                            <li><a href="#" class="block p-3 rounded-lg hover:bg-secondary-bg transition-colors">Pizzas</a></li>
+                            <li><a href="#" class="block p-3 rounded-lg hover:bg-secondary-bg transition-colors">Boissons</a></li>
+                            <li><a href="#" class="block p-3 rounded-lg hover:bg-secondary-bg transition-colors">Desserts</a></li>
+                            <li><a href="#" class="block p-3 rounded-lg hover:bg-secondary-bg transition-colors">Box & Menus</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                <!-- Grille produits -->
+                <div class="w-full md:w-3/4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                        <!-- Product card example -->
+                        <div class="card-bg rounded-lg overflow-hidden shadow-lg">
+                            <img src="https://placehold.co/600x400/000000/FFFFFF?text=Burger+Flix" alt="Burger Flix" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Burger Flix</h3>
+                                <p class="text-gray-400 mb-4 h-12">Le classique indémodable, avec notre sauce secrète.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold accent-color-text">8.50€</span>
+                                    <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-bg rounded-lg overflow-hidden shadow-lg">
+                            <img src="https://placehold.co/600x400/000000/FFFFFF?text=Burger+Spicy" alt="Burger Spicy" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Burger Spicy</h3>
+                                <p class="text-gray-400 mb-4 h-12">Pour ceux qui n'ont pas froid aux yeux.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold accent-color-text">9.00€</span>
+                                    <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="card-bg rounded-lg overflow-hidden shadow-lg">
+                            <img src="https://placehold.co/600x400/000000/FFFFFF?text=Double+Cheese" alt="Double Cheese" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Double Cheese</h3>
+                                <p class="text-gray-400 mb-4 h-12">Double viande, double fromage, double plaisir.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold accent-color-text">11.50€</span>
+                                    <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="card-bg rounded-lg overflow-hidden shadow-lg">
+                            <img src="https://placehold.co/600x400/000000/FFFFFF?text=Burger+Végé" alt="Burger Végé" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Burger Végé</h3>
+                                <p class="text-gray-400 mb-4 h-12">Une alternative gourmande et 100% végétale.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold accent-color-text">9.50€</span>
+                                    <button class="accent-color text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Page Cinéma / Vote -->
+    <main id="cinema" class="main-section">
+        <div class="container mx-auto px-4 py-12">
+            <h1 class="text-4xl font-bold mb-2 text-center">Programmation de la semaine</h1>
+            <p class="text-center text-gray-400 mb-8">Votez pour les films et séries que vous voulez voir à l'affiche !</p>
+
+            <!-- Films Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-6 border-l-4 accent-border pl-4">Films (12h - 20h)</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                    <!-- Film vote card -->
+                    <div class="card-bg rounded-lg overflow-hidden p-4 flex flex-col">
+                        <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Film+A" alt="Affiche Film A" class="rounded-md shadow-lg w-full">
+                        <h3 class="font-bold text-lg mt-4 mb-2">Titre du Film A</h3>
+                        <div class="w-full bg-gray-600 rounded-full h-2.5 mb-2">
+                            <div class="accent-color h-2.5 rounded-full" style="width: 45%"></div>
+                        </div>
+                        <button class="mt-auto w-full border accent-border text-[#FF6B00] font-semibold py-2 rounded-lg hover:bg-[#FF6B00] hover:text-white transition-all duration-300">Voter</button>
+                    </div>
+                    <div class="card-bg rounded-lg overflow-hidden p-4 flex flex-col">
+                        <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Film+B" alt="Affiche Film B" class="rounded-md shadow-lg w-full">
+                        <h3 class="font-bold text-lg mt-4 mb-2">Titre du Film B</h3>
+                        <div class="w-full bg-gray-600 rounded-full h-2.5 mb-2">
+                            <div class="accent-color h-2.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                        <button class="mt-auto w-full accent-color text-white font-semibold py-2 rounded-lg cursor-not-allowed opacity-70">Vote enregistré ✓</button>
+                    </div>
+                     <div class="card-bg rounded-lg overflow-hidden p-4 flex flex-col">
+                        <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Film+C" alt="Affiche Film C" class="rounded-md shadow-lg w-full">
+                        <h3 class="font-bold text-lg mt-4 mb-2">Titre du Film C</h3>
+                        <div class="w-full bg-gray-600 rounded-full h-2.5 mb-2">
+                            <div class="accent-color h-2.5 rounded-full" style="width: 20%"></div>
+                        </div>
+                        <button class="mt-auto w-full border accent-border text-[#FF6B00] font-semibold py-2 rounded-lg hover:bg-[#FF6B00] hover:text-white transition-all duration-300">Voter</button>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Séries Section -->
+            <div>
+                <h2 class="text-3xl font-bold mb-6 border-l-4 accent-border pl-4">Séries (21h - 05h)</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                     <!-- Série vote card -->
+                    <div class="card-bg rounded-lg overflow-hidden p-4 flex flex-col">
+                        <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Série+X" alt="Affiche Série X" class="rounded-md shadow-lg w-full">
+                        <h3 class="font-bold text-lg mt-4 mb-2">Titre de la Série X</h3>
+                        <div class="w-full bg-gray-600 rounded-full h-2.5 mb-2">
+                            <div class="accent-color h-2.5 rounded-full" style="width: 60%"></div>
+                        </div>
+                        <button class="mt-auto w-full border accent-border text-[#FF6B00] font-semibold py-2 rounded-lg hover:bg-[#FF6B00] hover:text-white transition-all duration-300">Voter</button>
+                    </div>
+                     <div class="card-bg rounded-lg overflow-hidden p-4 flex flex-col">
+                        <img src="https://placehold.co/500x750/1a1a1a/ffffff?text=Série+Y" alt="Affiche Série Y" class="rounded-md shadow-lg w-full">
+                        <h3 class="font-bold text-lg mt-4 mb-2">Titre de la Série Y</h3>
+                        <div class="w-full bg-gray-600 rounded-full h-2.5 mb-2">
+                            <div class="accent-color h-2.5 rounded-full" style="width: 35%"></div>
+                        </div>
+                        <button class="mt-auto w-full border accent-border text-[#FF6B00] font-semibold py-2 rounded-lg hover:bg-[#FF6B00] hover:text-white transition-all duration-300">Voter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Page de Réservation -->
+    <main id="reservation" class="main-section">
+        <div class="container mx-auto px-4 py-12">
+            <h1 class="text-4xl font-bold mb-8 text-center">Réserver une Salle Privée</h1>
+            <div class="max-w-4xl mx-auto secondary-bg p-8 rounded-lg">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="step-item text-center">
+                        <div class="w-12 h-12 rounded-full accent-color text-white flex items-center justify-center text-2xl font-bold mx-auto">1</div>
+                        <p class="mt-2 font-semibold">Date & Heure</p>
+                    </div>
+                    <div class="flex-grow h-1 bg-gray-600"></div>
+                    <div class="step-item text-center opacity-50">
+                        <div class="w-12 h-12 rounded-full bg-gray-600 text-white flex items-center justify-center text-2xl font-bold mx-auto">2</div>
+                        <p class="mt-2 font-semibold">Programmation</p>
+                    </div>
+                    <div class="flex-grow h-1 bg-gray-600"></div>
+                     <div class="step-item text-center opacity-50">
+                        <div class="w-12 h-12 rounded-full bg-gray-600 text-white flex items-center justify-center text-2xl font-bold mx-auto">3</div>
+                        <p class="mt-2 font-semibold">Menu</p>
+                    </div>
+                     <div class="flex-grow h-1 bg-gray-600"></div>
+                     <div class="step-item text-center opacity-50">
+                        <div class="w-12 h-12 rounded-full bg-gray-600 text-white flex items-center justify-center text-2xl font-bold mx-auto">4</div>
+                        <p class="mt-2 font-semibold">Paiement</p>
+                    </div>
+                </div>
+
+                <!-- Step 1 Form -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Choisissez une date et un créneau</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label for="date" class="block mb-2 font-semibold">Date</label>
+                            <input type="date" id="date" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-orange-500">
+                        </div>
+                         <div>
+                            <label for="time" class="block mb-2 font-semibold">Créneau horaire</label>
+                            <select id="time" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-orange-500">
+                                <option>18:00 - 21:00</option>
+                                <option>21:30 - 00:30</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="mt-8 float-right accent-color text-white px-8 py-3 rounded-lg text-lg font-bold hover:opacity-90 transition-opacity">
+                        Suivant
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <!-- Dashboard Administrateur -->
+    <main id="admin" class="main-section">
+        <div class="flex h-screen bg-secondary-bg">
+            <!-- Sidebar -->
+            <aside class="w-64 bg-[#121212] p-6 flex flex-col">
+                <a href="#" class="text-2xl font-bold tracking-wider mb-10">Admin<span class="accent-color-text"> Panel</span></a>
+                <nav class="flex flex-col space-y-2">
+                    <a href="#" class="flex items-center p-3 rounded-lg accent-color text-white"><i data-lucide="layout-dashboard" class="mr-3"></i>Dashboard</a>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700"><i data-lucide="shopping-cart" class="mr-3"></i>Commandes</a>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700"><i data-lucide="utensils-crossed" class="mr-3"></i>Menus</a>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700"><i data-lucide="clapperboard" class="mr-3"></i>Cinéma</a>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700"><i data-lucide="calendar" class="mr-3"></i>Réservations</a>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700"><i data-lucide="users" class="mr-3"></i>Utilisateurs</a>
+                </nav>
+                <a href="#" class="mt-auto flex items-center p-3 rounded-lg hover:bg-gray-700"><i data-lucide="log-out" class="mr-3"></i>Déconnexion</a>
+            </aside>
+            <!-- Main Content -->
+            <div class="flex-1 p-8 overflow-y-auto">
+                 <h1 class="text-3xl font-bold mb-8">Dernières Commandes</h1>
+                 <div class="bg-[#121212] rounded-lg shadow-lg">
+                    <table class="w-full text-left">
+                        <thead class="border-b border-gray-700">
+                            <tr>
+                                <th class="p-4">ID Commande</th>
+                                <th class="p-4">Client</th>
+                                <th class="p-4">Date</th>
+                                <th class="p-4">Montant</th>
+                                <th class="p-4">Statut</th>
+                                <th class="p-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-800 hover:bg-secondary-bg">
+                                <td class="p-4">#FC1024</td>
+                                <td class="p-4">Jean Dupont</td>
+                                <td class="p-4">22/06/2025</td>
+                                <td class="p-4">25.50€</td>
+                                <td class="p-4"><span class="px-2 py-1 text-sm rounded-full bg-green-500/20 text-green-400">Livrée</span></td>
+                                <td class="p-4"><button class="p-1 hover:accent-color-text"><i data-lucide="eye"></i></button></td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-secondary-bg">
+                                <td class="p-4">#FC1023</td>
+                                <td class="p-4">Marie Claire</td>
+                                <td class="p-4">22/06/2025</td>
+                                <td class="p-4">42.00€</td>
+                                <td class="p-4"><span class="px-2 py-1 text-sm rounded-full bg-yellow-500/20 text-yellow-400">En préparation</span></td>
+                                <td class="p-4"><button class="p-1 hover:accent-color-text"><i data-lucide="eye"></i></button></td>
+                            </tr>
+                             <tr class="border-b border-gray-800 hover:bg-secondary-bg">
+                                <td class="p-4">#FC1022</td>
+                                <td class="p-4">Paul Martin</td>
+                                <td class="p-4">21/06/2025</td>
+                                <td class="p-4">15.50€</td>
+                                <td class="p-4"><span class="px-2 py-1 text-sm rounded-full bg-red-500/20 text-red-400">Annulée</span></td>
+                                <td class="p-4"><button class="p-1 hover:accent-color-text"><i data-lucide="eye"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function showPage(pageId) {
+            // Hide all main sections
+            document.querySelectorAll('.main-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the target section
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
