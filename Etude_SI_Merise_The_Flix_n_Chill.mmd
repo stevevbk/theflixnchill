@@ -1,0 +1,70 @@
+erDiagram
+  UTILISATEUR {
+    string id
+    string nom
+    string email
+    string role
+  }
+  PRODUIT {
+    string id
+    string nom
+    string description
+    float prix
+    string categorie
+  }
+  COMMANDE {
+    string id
+    date date
+    float montant
+    string statut
+  }
+  PANIER {
+    string id
+    date date_creation
+  }
+  RESERVATION {
+    string id
+    date date
+    string creneau
+    int nb_personnes
+    string statut
+  }
+  FILM_SERIE {
+    string id
+    string titre
+    string type
+    int votes
+  }
+  VOTE {
+    string id
+    date date
+  }
+  SALLE {
+    string id
+    string nom
+    int capacite
+  }
+
+  UTILISATEUR ||--o{ COMMANDE : passe
+  COMMANDE }o--|{ PRODUIT : contient
+  UTILISATEUR ||--o{ RESERVATION : effectue
+  RESERVATION }o--|| SALLE : concerne
+  UTILISATEUR ||--o{ VOTE : effectue
+  VOTE }o--|| FILM_SERIE : pour
+  PANIER ||--o{ PRODUIT : contient
+  UTILISATEUR ||--o{ PANIER : possède
+
+---
+
+flowchart TD
+  A[Utilisateur] -->|Ajoute au panier| B[Panier]
+  B -->|Valide commande| C[Commande]
+  C -->|Paiement| D[Confirmation]
+  A -->|Consulte programmation| E[Film/Série]
+  A -->|Vote| F[Vote]
+  A -->|Réserve salle| G[Réservation]
+  G -->|Choix menu| B
+  A -->|Accès admin| H[Interface Admin]
+  H -->|Gère| C
+  H -->|Gère| G
+  H -->|Gère| E 
